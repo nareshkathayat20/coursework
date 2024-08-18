@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Paths to keys and files
+PRIVATE_KEY_PATH="./private.pem"
+PUBLIC_KEY_PATH="./public.pem"
+SYMMETRIC_KEY="./symmetric_key.key"
+FILE_TO_ENCRYPT="./message.txt"
+ENCRYPTED_FILE="./message.enc"
+DECRYPTED_FILE="./message_decrypted.txt"
+SIGNATURE_FILE="./signature.sha256"
+
+# Check if the required files exist
+if [ ! -f "$PRIVATE_KEY_PATH" ] || [ ! -f "$PUBLIC_KEY_PATH" ]; then
+  echo "Error: Private or public key file not found."
+  exit 1
+fi
+
+# Generate a file to encrypt (Example data)
+echo "This is a confidential message." > "$FILE_TO_ENCRYPT"
+
+# Generate a random symmetric key for AES-256 encryption
+openssl rand -out "$SYMMETRIC
